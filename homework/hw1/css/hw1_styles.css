@@ -1,0 +1,83 @@
+body {
+    background-color:#42f4dc;
+    color:black;
+}
+
+header, main, nav, footer {
+    text-align: center;
+}
+
+nav a {
+    padding:15px;
+    padding-bottom: 4px;
+    font-size: 1.8em;
+    text-decoration: none;
+    color:black;
+}
+
+nav a:hover {
+    border-bottom: 2px orange solid;
+    font-size: 2em;
+    transition: .6s;
+}
+
+#indexInfo {
+    color:black;
+    font-size: 1.1em;
+}
+
+.imgDiv, .infoText {
+    display:flex;
+    text-align: left;
+    padding:10px;
+    margin:10px;
+}
+
+.indexText {
+    margin:15px;
+}
+
+nav .active {
+    background-color: #3a9147;
+    color:black;
+}
+
+#virus_list {
+    color:black;
+    font-size: 1.1em;
+}
+
+.listItems {
+    color: #3a9147;
+}
+
+#doDiv, #dontDiv {
+    display:flex;
+}
+
+.images:hover {
+    transform: scale(1.1);
+}
+
+.hr {
+    width: 75%;
+    color:black;
+    background-color: black;
+}
+
+.column {
+    float:left;
+    width: 50%;
+    text-align: left;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.list_title {
+    text-align: center;
+    text-decoration: underline;
+}
