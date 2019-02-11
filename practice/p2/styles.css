@@ -1,0 +1,53 @@
+#header_div_bottom {
+    background-color: #002a4e;
+    color:white;
+    height: 125px;
+}
+
+#title_wrap{
+    padding-top: 1px;
+    padding-left: 40px;
+    font-size: 1.8em;
+}
+
+#main_img_div {
+    display:flex;
+}
+
+.img_class {
+    padding-left: 0px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+#main_top_div, #main_bottom_div, #main_title_div, #main_img_div {
+    padding:5px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+li {
+    padding: 3px;
+}
+
+body {
+    font-family: "Hind","Helvetica Neue",Helvetica,Arial,"Nimbus Sans L",sans-serif;
+}
+
+#degree_title {
+    font-size: 1.9em;
+}
+
+#scd_paragraph {
+    font-size: 1.5em;
+}
+
+a {
+    font-size: 1.5em;
+    color: #002a4e;
+}
+
+h3 {
+    font-size: 1.5em;
+}
