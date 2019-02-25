@@ -1,0 +1,181 @@
+<html>
+<head>
+    <title>Shopping Cart</title>
+    
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1> Spring Break Shopping  </h1>
+
+<div class = "container">
+    <table class="table table-bordered">
+    <tr>
+        <th>Product</th>
+        <th>Unit <br> Price</th>
+        <th> Quantity </th>
+        <th>Total</th>
+    </tr>
+    <tr>
+        <td>Microfiber Beach Towel</td>
+        <td>$30</td>
+        <td><input id="q1" class="quant" type="text" size="5"></td>
+        <td id="q1total"></td>
+    </tr>
+
+   <tr>
+        <td>Sunscreen 100SPF, 120ml</td>
+        <td>$10</td>
+        <td><input  id="q2" class="quant" type="text" size="5"></td>
+        <td id="q2total"></td>
+    </tr>    
+    
+    <tr>
+        <td>Ipanema Flip-flop Sandals </td>
+        <td>$20</td>
+        <td><input id="q3" class="quant" type="text" size="5"></td>
+        <td id="q3total"></td>
+    </tr>
+
+   <tr>
+        <td>Shipping</td>
+        <td></td>
+        <td></td>
+        <td id="shippingDisplay"></td>
+    </tr>    
+        
+    <tr>
+        <td>Subtotal</td>
+        <td></td>
+        <td></td>
+        <td id="subtotal"></td>
+    </tr>             
+        
+    <tr>
+        <td>Tax (10%)</td>
+        <td></td>
+        <td></td>
+        <td id="tax"></td>
+    </tr>
+    
+    <tr>
+        <td>Total</td>
+        <td></td>
+        <td><button id="totalButton">Calculate Total</button></td>
+        <td id="total"></td>
+    </tr>
+       
+    </table>
+</div>
+    
+    <h3>Shipping & Handling</h3>
+    <div id="shipError"></div>
+    <select id="shipping">
+        <option value = "">Select one</option>
+        <option value = "Next-day Delivery: $15.00">Next-day Delivery: $15.00</option>
+        <option value = "Three-day Delivery: $10.00">Three-day Delivery: $10.00</option>
+        <option value = "Regular (5-8 days): $5.00">Regular (5-8 days): $5.00</option>
+    </select>
+    <br><br>
+        
+    <input type="checkbox" id="acceptTerms"><label for="acceptTerms">I accept the terms of this purchase</label>
+    <br> 
+    
+    <button id="purchaseButton">"CONFIRM PURCHASE"</button>
+
+</body>
+
+<script>
+    
+    let q1price=30;
+    let q2price=10;
+    let q3price=20;
+    
+    let q1q;
+    let q2q;
+    let q3q;
+    
+    let q1t;
+    let q2t;
+    let q3t;
+    
+    var shipNum;
+    
+    
+    let shippingResponse;
+    
+    
+    /*global $*/
+    $(".quant").on("change", function(){
+        q1q = $("#q1").val();
+        q2q = $("#q2").val();
+        q3q = $("#q3").val();
+        
+        q1t = q1price*q1q;
+        q2t = q2price*q2q;
+        q3t = q3price*q3q;
+        
+        $("#q1total").html("$" + q1t).css("color", "blue");
+        $("#q2total").html("$" + q2t).css("color", "blue");
+        $("#q3total").html("$" + q3t).css("color", "blue");
+    });
+    
+    $("#shipping").on("change", function() {
+        //alert("hi");
+        
+        shippingResponse= $("#shipping").val();
+        if(shippingResponse == "Next-day Delivery: $15.00")
+        {
+            shipNum = 15;
+            $("#shippingDisplay").html("$" + shipNum).css("color", "blue");
+        }
+        else if(shippingResponse == "Three-day Delivery: $10.00")
+        {
+            shipNum = 10;
+            $("#shippingDisplay").html("$" + shipNum).css("color", "blue");
+        }
+        else if(shippingResponse == "Regular (5-8 days): $5.00")
+        {
+            shipNum = 5;
+            $("#shippingDisplay").html("$" + shipNum).css("color", "blue");
+        }
+        else if(shippingResponse == "")
+        {
+            $("#shipError").html("A shipping option must be selected").css("color", "red");
+            return;
+        }
+        //shipNum = parseInt(shippingResponse);
+        //alert(shipNum);
+        
+    });
+    
+    $("#totalButton").on("click", function() {
+        var sbt = q1t + q2t + q3t + shipNum;
+        var taxed = sbt * .1;
+        var tCost = sbt + taxed;
+        
+        $("#subtotal").html("$" + sbt).css("color", "green");
+        $("#tax").html("$" + taxed).css("color", "green");
+        $("#total").html("$" + tCost).css("color", "red");
+    });
+    
+    
+    $("#purchaseButton").on("click", function(){
+        alert("test");
+        
+        if ( !$("#acceptTerms").is(':checked') ) {
+            $("#acceptTerms").css("color", "red");
+        }
+        
+        if (shippingResponse == "" ) {
+            $("#shipError").html("A shipping option must be selected").css("color", "red");
+        }
+        
+    });
+    
+    
+</script>
+</html>
