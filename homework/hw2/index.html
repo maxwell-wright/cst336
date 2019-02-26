@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        
+        <meta charset="utf-8" />
+        <title>Wag n Bark - Dog Services</title>
+        
+        <link href="style.css" rel="stylesheet">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+        
+        <header> 
+        
+            <h1>Schedule a Service!</h1>
+            
+        </header>
+        
+        <main>
+           
+           <div id = "container">
+               
+               Owner name (first, last): <input type="text" id="ownerName">
+               <br><br>
+               
+               Companion Name: <input type="text" id="dogName">
+               <br><br>
+               
+               Companion Vaccinations Received (select all that apply):<span id="uncheckedVac"></span>
+               <br>
+               <input type="checkbox" id="check1"><label for="check1">Rabies</label></checkbox>
+               <input type="checkbox" id="check2"><label for="check2">Distemper</label></checkbox>
+               <input type="checkbox" id="check3"><label for="check3">Measles</label></checkbox>
+               <input type="checkbox" id="check4"><label for="check4">Parainfluenza</label></checkbox>
+               <br><br>
+               
+               <span id="serviceText">Select a Desired Service:</span>
+               <br>
+               <select id="services">
+                   <option value="none">Select One</option>
+                   <option value=1>Walking</option>
+                   <option value=2>Grooming</option>
+                   <option value=3>Day Care</option>
+                   <option value=4>Overnight Care(1+ days)</option>
+               </select>
+               <br><br>
+               
+               <span id="serviceTime">Service Time:</span>
+               <br>
+               <div id="timeOptions">   
+                   <input type="radio" name ="opt" id="hr1" value="available"><label id="hr1Label" for="hr1"></label>
+                   <input type="radio" name ="opt" id="hr2" value="full"><label id="hr2Label" for="hr2"></label>
+                   <input type="radio" name ="opt" id="hr3" value="available"><label id="hr3Label" for="hr3"></label>
+                   <input type="radio" name ="opt" id="hr4" value="full"><label id="hr4Label" for="hr4"></label>
+               </div>
+               <br><br>    
+               
+               
+               
+           </div>
+           
+        </main>
+        
+        <br /><br />
+        <br /><br />
+        
+        <hr class="hr">
+        
+        <footer id="footer-text">
+            
+            &copy; 2019. Maxwell Wright - CST 336 Internet Programming <br />
+            <strong>Disclaimer:</strong> the content of this web page is fake and is for educational purposes only.
+            
+            <img src="../../images/csumb_logo.png" id="csumb-logo"width="10%" height="10%" alt="CSUMB Logo"  />
+        </footer>
+        
+    </body>
+    
+    <script>
+        let serviceVal;
+        /*global $*/
+        
+        $("#services").on("change", function(){
+           
+           serviceVal = $("#services").val();
+           //console.log(serviceVal);
+           //alert("hi");
+           
+           if (serviceVal == "none") {
+               $("#timeOptions").css("display", "none");
+           }
+           
+           if (serviceVal == "1") {
+              //alert("hi");
+              $("#timeOptions").css("display", "inline");
+              $("#hr1Label").html("8:00 - 8:50");
+              $("#hr2Label").html("9:00 - 9:50");
+              $("#hr3Label").html("10:00 - 10:50");
+              $("#hr4Label").html("11:00 - 11:50");
+           };
+           
+           if (serviceVal == "2") {
+              $("#timeOptions").css("display", "inline");
+              $("#hr1Label").html("12:00 - 12:45");
+              $("#hr2Label").html("1:00 - 1:45");
+              $("#hr3Label").html("2:00 - 2:45");
+              $("#hr4Label").html("3:00 - 3:45");
+           };
+           
+           if (serviceVal == "3") {
+              $("#timeOptions").css("display", "inline");
+              $("#hr1Label").html("1 - 3 hours");
+              $("#hr2Label").html("3 - 6 hours");
+              $("#hr3Label").html("6 - 9 hours");
+              $("#hr4Label").html("9 - 12 hours");
+           };
+           
+           if (serviceVal == "4") {
+              $("#timeOptions").css("display", "inline");
+              $("#hr1Label").html("Single Night");
+              $("#hr2Label").html("2 - 4 nights");
+              $("#hr3Label").html("5 - 7 nights");
+              $("#hr4Label").html("Extended Stay");
+           };
+            
+        });
+        
+        $("#scheduleButton").on("click", function(){
+           let timeOpt = $("input[name=opt]:checked").val(); 
+        });
+        
+    </script>
+
+</html>
