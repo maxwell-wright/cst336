@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+<title> Sign Up Page </title>
+
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script>
+    /* global $*/
+    
+    
+    $(document).ready( function(){
+        
+        $("#state").on("change", function() {
+            //alert($("#state").val());
+            
+            $.ajax({
+
+                type: "GET",
+                url: "http://itcdland.csumb.edu/~milara/ajax/countyList.php",
+                dataType: "json",
+                data: { "state": $("#state").val() },
+                success: function(data,status) {
+                    
+                  //alert(data[0].county);
+                  $("#county").html("<option> Select One </option>");
+                  for (let i=0; i < data.length; i++){
+                      
+                      $("#county").append("<option>" + data[i].county + "</option>");
+                      
+                  }
+                  
+                
+                },
+                complete: function(data,status) { //optional, used for debugging purposes
+                //alert(status);
+                }
+                
+            });//ajax
+            
+            
+        });
+        
+        
+        $("#zipCode").on("change", function(){
+            
+            //alert(  $("#zipCode").val()  );
+            
+            $.ajax({
+                type: "GET",
+                url: "http://itcdland.csumb.edu/~milara/ajax/cityInfoByZip.php",
+                dataType: "json",
+                data: { "zip": $("#zipCode").val() },
+                success: function(data,status) {
+                  //alert(data.city);
+                  
+                  if (!(data.available)) {
+                      $("#zipcodeError").html("Zipcode not found!").css("color", "red");
+                  }
+                  
+                  $("#city").html(data.city);
+                
+                },
+                complete: function(data,status) { //optional, used for debugging purposes
+                  // alert(status);
+                }
+                
+            });//ajax
+            
+            
+        });//zipCode
+        
+        
+        
+        $("#username").on("change", function() {
+            //alert("hi");
+            $.ajax({
+
+                type: "GET",
+                url: "checkUsername_text.php",
+                data: { "username": $("#username").val() },
+            success: function(data,status) {
+            //alert(data);
+            
+            if (data == "Available") {    
+                $("#usernameError").html(data).css("color", "green");
+            }
+            
+            else {
+                $("#usernameError").html(data).css("color", "red");
+            }
+            
+            
+            },
+            complete: function(data,status) { //optional, used for debugging purposes
+            //alert(status);
+            }
+                
+            });//ajax
+        });
+        
+        $("#signUp").on("click", function() {
+           //alert; 
+           let usernameVal = $("#username").val();
+           let password1Val = $("#password1").val();
+           let password2Val = $("#password2").val();
+           
+           console.log(password1Val);
+           console.log(password2Val);
+           
+           if (usernameVal.length < 4) {
+               $("#usernameError").html("Username be at least four characters long!").css("color", "red");
+           }
+           
+           if (password1Val.length < 6) {
+                $("#password1Error").html("Password be at least six characters long!").css("color", "red");
+           }
+           
+           if (password1Val != password2Val) {
+               //alert("hi");
+                $("#password2Error").html("Passwords do not match!").css("color", "red");
+           }
+           
+           
+           
+        });
+            
+            
+            /*
+            $.ajax({
+
+                type: "GET",
+                url: "checkUser_json.php",
+                dataType: "json",
+                data: { "username": $("#username2").val() },
+            success: function(data,status) {
+            //alert(data);
+            if(data.available){
+                $("#usernameError").html("username is available").css("color", "green");
+            }
+            
+            else {
+                $("#usernameError").html("username is already taken").css("color", "red");
+            }
+            
+    
+            },
+            complete: function(data,status) { //optional, used for debugging purposes
+            //alert(status);
+            }
+
+        });
+        */
+        
+        
+    } ); //document.ready()
+    
+    
+    
+        
+    
+</script>
+
+</head>
+
+
+<body>
+    <div class="container">
+        
+    <h1 class="modal-title"> Sign Up Form </h1>
+    
+        
+            <fieldset>
+            <legend>Sign Up</legend>
+            First Name: <input type="text">
+            <br> 
+            Last Name: <input type="text">
+            <br> 
+            Email: <input type="text" class="form-group">
+            <br> 
+            Phone Number:<input type="text">
+            <br><br>
+            Zip Code: <input type="text" id="zipCode"><span id="zipcodeError"></span>
+            <br>
+            City: <span id="city"></span>
+            <br>
+            Latitude: 
+            <br>
+            Longitude:
+            <br><br>
+            State: 
+            <select id="state">
+               <option> Select One </option> 
+               <option value="al"> Alabama </option>
+               <option value="ak"> Alaska </option>
+               <option value="az"> Arizona </option>
+               <option value="ar"> Arkansas </option>
+               <option value="ca"> California </option>
+               <option value="co"> Colorado </option>
+               <option value="ct"> Conneticut </option>
+               <option value="de"> Delaware </option>
+               <option value="fl"> Florida </option>
+               <option value="ga"> Georgia </option>
+               <option value="hi"> Hawaii </option>
+               <option value="id"> Idaho </option>
+               <option value="il"> Illinois </option>
+               <option value="in"> Indiana </option>
+               <option value="ia"> Iowa </option>
+               <option value="ks"> Kansas </option>
+               <option value="ky"> Kentucky </option>
+               <option value="la"> Louisiana </option>
+               <option value="me"> Maine </option>
+               <option value="md"> Maryland </option>
+               <option value="ma"> Massachussetts </option>
+               <option value="mi"> Michigan </option>
+               <option value="mn"> Minnesota </option>
+               <option value="ms"> Mississippi </option>
+               <option value="mo"> Missouri </option>
+               <option value="mt"> Montana </option>
+               <option value="ne"> Nebraska </option>
+               <option value="nv"> Nevada </option>
+               <option value="nh"> New Hampshire </option>
+               <option value="nj"> New Jersey </option>
+               <option value="nm"> New Mexico </option>
+               <option value="ny"> New York </option>
+               <option value="nc"> North Carolina </option>
+               <option value="nd"> North Dakota </option>
+               <option value="oh"> Ohio </option>
+               <option value="ok"> Oklahoma </option>
+               <option value="or"> Oregon </option>
+               <option value="pa"> Pennsylvania </option>
+               <option value="ri"> Rhode Island </option>
+               <option value="sc"> South Carolina </option>
+               <option value="sd"> South Dakota </option>
+               <option value="tn"> Tennessee </option>
+               <option value="tx"> Texas </option>
+               <option value="ut"> Utah </option>
+               <option value="vt"> Vermont </option>
+               <option value="va"> Virginia </option>
+               <option value="wa"> Washington </option>
+               <option value="wv"> West Virginia </option>
+               <option value="wi"> Wisconsin </option>
+               <option value="wy"> Wyoming </option>
+               
+               
+               
+               
+            </select>
+            <br>
+            
+            Select a County: <select id="county"></select>
+            <br>
+            
+            Desired Username: <input type="text" id="username"><span id="usernameError"></span>
+            <br>
+            
+            Password: <input type="password" id="password1"><span id="password1Error"></span>
+            <br>
+            
+            Type Password Again: <input type="password" id="password2"><span id="password2Error"></span>
+            <br>
+            
+            <input type="submit" value="Sign up!" id="signUp">
+            </fieldset>
+        </div>
+</body>
+</html>
