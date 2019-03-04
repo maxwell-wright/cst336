@@ -1,0 +1,11 @@
+/*#like, #dislike {
+    : right;
+}*/
+
+#spacingDiv {
+    width:50px;
+}
+
+#mainDiv {
+    display:flex;
+}
