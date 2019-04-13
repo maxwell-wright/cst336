@@ -5,7 +5,8 @@ session_start(); //starts or resumes an existing session
 
 include '../../inc/dbConnection_heroku.php';
 
-$conn = getDatabaseConnection("ottermart");
+$conn = getDatabaseConnection("heroku_af1b57caccf5520");
+mysql://b184106b8bd92a:853ab472@us-cdbr-iron-east-02.cleardb.net/heroku_af1b57caccf5520?reconnect=true
 
 $username = $_POST['username'];
 $password = sha1($_POST['password']);

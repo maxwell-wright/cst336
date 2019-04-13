@@ -1,7 +1,7 @@
 <?php
 
     include '../../../inc/dbConnection_heroku.php';
-    $conn = getDatabaseConnection("ottermart");
+    $conn = getDatabaseConnection("heroku_af1b57caccf5520");
     
     $arr = array();
     

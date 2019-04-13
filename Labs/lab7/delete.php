@@ -10,7 +10,7 @@ if (!isset($_SESSION['adminName'])) {
 
 
     include '../../inc/dbConnection_heroku.php';
-    $conn = getDatabaseConnection("ottermart");
+    $conn = getDatabaseConnection("heroku_af1b57caccf5520");
 
     $sql = "DELETE FROM `om_product` WHERE `om_product`.`productId` = " . $_POST['productId'];
     $stmt = $conn->prepare($sql);
