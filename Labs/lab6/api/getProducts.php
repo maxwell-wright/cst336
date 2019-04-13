@@ -2,8 +2,8 @@
 
 $host = "us-cdbr-iron-east-02.cleardb.net";
 $dbname = "heroku_af1b57caccf5520";
-//$username = "";
-//$password = "";
+$username = "";
+$password = "";
 
 // Establishing a connection
 $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
