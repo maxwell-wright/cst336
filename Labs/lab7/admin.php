@@ -29,6 +29,10 @@ if (!isset($_SESSION['adminName'])) {
                 $('#productModal').modal("show");
             }
             
+            function logout() {
+                return confirm("Are you sure you want you log out?");
+            }
+            
             $(document).ready(function(){
                 
                 //Gets first 10 products from the database and displays them
@@ -89,8 +93,8 @@ if (!isset($_SESSION['adminName'])) {
 
         Welcome <?=$_SESSION['adminName']?> 
         
-        <form action="login.html">
-            <input type="submit" value="Logout" />
+        <form action="logout.php">
+            <input type="submit" onsubmit="return logout()" value="Logout" />
         </form>
         
     <br><hr><br>

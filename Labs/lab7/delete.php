@@ -9,7 +9,7 @@ if (!isset($_SESSION['adminName'])) {
 }
 
 
-    include '../../inc/dbConnection.php';
+    include '../../inc/dbConnection_heroku.php';
     $conn = getDatabaseConnection("ottermart");
 
     $sql = "DELETE FROM `om_product` WHERE `om_product`.`productId` = " . $_POST['productId'];
