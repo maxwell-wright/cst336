@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 6, Product Search </title>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        
+        <script>
+            /*global $*/
+            
+             $(document).ready(function(){
+                                
+                $.ajax({
+                
+                type: "GET",
+                url: "api/getCategories.php",
+                dataType: "json",
+                success: function(data,status) {
+                    alert("balls");
+                    data.forEach(function(key) {
+                       $("[name=category]").append("<option value=" + key["catId"] + ">"
+                                                    + key["catName"] + "</option>");
+                        
+                    });
+                },
+                complete: function(data,status) { //optional, used for debugging purposes
+                //alert(status);
+                }
+                
+                });//ajax
+                
+                
+                
+            }); // document ready
+            
+            
+            
+            $(document).ready(function(){
+                                
+                $.ajax({
+                
+                type: "GET",
+                url: "api/getProducts.php",
+                dataType: "json",
+                success: function(data,status) {
+                    alert(data[0].productName);
+                    
+                    for(i = 0; i < data.length; i++) {
+                        
+                        $("#products").append(data[i].productName + "<br>");
+                        
+                    }
+                    
+                    /*
+                    forEach(function(product){
+                        
+                        $("#products").append(product.productName + "<br>");
+                        
+                    });
+                    */
+                    
+                },
+                complete: function(data,status) { //optional, used for debugging purposes
+                //alert(status);
+                }
+                
+                });//ajax
+                
+                
+                
+            }); // document ready
+            
+            
+        </script>
+        
+        
+    </head>
+    <body>
+        <h1>Product Search</h1>
+        
+        <form>
+            
+            Product: <input type="text" name="product" />
+            <br>
+            Category: 
+            <select name="category">
+                <option value="">Select One</option>
+            </select>
+            <br>
+            Price: From <input type="text" name="priceFrom" size="7"/>
+                   To <input type="text" name="priceTo" size="7"/>
+            <br>
+            Order Result By:
+            <br>
+            <input type="radio" name="orderBy" value="price"/> Price <br>
+            <input type="radio" name="orderBy" value="name"/> Name <br>
+            
+            <br><br>
+        </form>
+        <br>
+        <button id="searchForm">Search</button>
+        
+            
+            
+        </div>
+    </body>
+</html>

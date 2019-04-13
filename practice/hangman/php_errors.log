@@ -1,0 +1,62 @@
+[08-Apr-2019 19:10:02 UTC] PHP Warning:  include(dbConnection.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 5
+[08-Apr-2019 19:10:02 UTC] PHP Stack trace:
+[08-Apr-2019 19:10:02 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:10:02 UTC] PHP Warning:  include(): Failed opening 'dbConnection.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 5
+[08-Apr-2019 19:10:02 UTC] PHP Stack trace:
+[08-Apr-2019 19:10:02 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:10:02 UTC] PHP Fatal error:  Call to undefined function getDatabaseConnection() in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 6
+[08-Apr-2019 19:10:02 UTC] PHP Stack trace:
+[08-Apr-2019 19:10:02 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:11:08 UTC] PHP Warning:  include(dbConnection.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 5
+[08-Apr-2019 19:11:08 UTC] PHP Stack trace:
+[08-Apr-2019 19:11:08 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:11:08 UTC] PHP Warning:  include(): Failed opening 'dbConnection.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 5
+[08-Apr-2019 19:11:08 UTC] PHP Stack trace:
+[08-Apr-2019 19:11:08 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:11:08 UTC] PHP Fatal error:  Call to undefined function getDatabaseConnection() in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 6
+[08-Apr-2019 19:11:08 UTC] PHP Stack trace:
+[08-Apr-2019 19:11:08 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:22:49 UTC] PHP Warning:  include(dbConnection.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 5
+[08-Apr-2019 19:22:49 UTC] PHP Stack trace:
+[08-Apr-2019 19:22:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:22:49 UTC] PHP Warning:  include(): Failed opening 'dbConnection.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 5
+[08-Apr-2019 19:22:49 UTC] PHP Stack trace:
+[08-Apr-2019 19:22:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:22:49 UTC] PHP Fatal error:  Call to undefined function getDatabaseConnection() in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 6
+[08-Apr-2019 19:22:49 UTC] PHP Stack trace:
+[08-Apr-2019 19:22:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:27:54 UTC] PHP Warning:  include(dbConnection.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 5
+[08-Apr-2019 19:27:54 UTC] PHP Stack trace:
+[08-Apr-2019 19:27:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:27:54 UTC] PHP Warning:  include(): Failed opening 'dbConnection.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 5
+[08-Apr-2019 19:27:54 UTC] PHP Stack trace:
+[08-Apr-2019 19:27:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:27:54 UTC] PHP Fatal error:  Call to undefined function getDatabaseConnection() in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 6
+[08-Apr-2019 19:27:54 UTC] PHP Stack trace:
+[08-Apr-2019 19:27:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:36:06 UTC] PHP Warning:  include(dbConnection.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 5
+[08-Apr-2019 19:36:06 UTC] PHP Stack trace:
+[08-Apr-2019 19:36:06 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:36:06 UTC] PHP Warning:  include(): Failed opening 'dbConnection.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 5
+[08-Apr-2019 19:36:06 UTC] PHP Stack trace:
+[08-Apr-2019 19:36:06 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 19:36:06 UTC] PHP Fatal error:  Call to undefined function getDatabaseConnection() in /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php on line 6
+[08-Apr-2019 19:36:06 UTC] PHP Stack trace:
+[08-Apr-2019 19:36:06 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/get_word_api.php:0
+[08-Apr-2019 20:02:31 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 9
+[08-Apr-2019 20:02:33 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 9
+[08-Apr-2019 20:02:33 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 9
+[08-Apr-2019 20:03:42 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 9
+[08-Apr-2019 20:04:01 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 9
+[08-Apr-2019 20:04:34 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 9
+[08-Apr-2019 20:05:29 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 9
+[08-Apr-2019 20:07:09 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 9
+[08-Apr-2019 20:07:12 UTC] PHP Parse error:  syntax error, unexpected '$conn' (T_VARIABLE) in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 9
+[08-Apr-2019 20:08:15 UTC] PHP Parse error:  syntax error, unexpected 'array' (T_ARRAY) in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 17
+[08-Apr-2019 20:08:17 UTC] PHP Parse error:  syntax error, unexpected 'array' (T_ARRAY) in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 17
+[08-Apr-2019 20:09:07 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 21
+[08-Apr-2019 20:11:53 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 21
+[08-Apr-2019 20:12:53 UTC] PHP Warning:  str_split() expects parameter 1 to be string, array given in /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php on line 16
+[08-Apr-2019 20:12:53 UTC] PHP Stack trace:
+[08-Apr-2019 20:12:53 UTC] PHP   1. {main}() /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php:0
+[08-Apr-2019 20:12:53 UTC] PHP   2. str_split() /home/ubuntu/workspace/cst336/practice/hangman/api/check_word.php:16
