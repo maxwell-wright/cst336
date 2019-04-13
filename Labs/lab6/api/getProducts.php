@@ -1,7 +1,11 @@
 <?php
 
-$host = "us-cdbr-iron-east-02.cleardb.net";
-$dbname = "heroku_af1b57caccf5520";
+include '../../../inc/dbConnection_heroku.php';
+
+//header('Access-Control-Allow-Origin: *');
+
+$host = "localhost";
+$dbname = "ottermart";
 $username = "";
 $password = "";
 
