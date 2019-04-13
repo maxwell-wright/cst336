@@ -4,8 +4,8 @@ include '../../../inc/dbConnection_heroku.php';
 
 //header('Access-Control-Allow-Origin: *');
 
-$host = "localhost";
-$dbname = "ottermart";
+$host = "";
+$dbname = "";
 $username = "";
 $password = "";
 
