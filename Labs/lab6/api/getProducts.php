@@ -1,16 +1,17 @@
 <?php
 
 include '../../../inc/dbConnection_heroku.php';
+$dbConn = getDatabaseConnection("ottermart");
 
 //header('Access-Control-Allow-Origin: *');
 
-$host = "";
-$dbname = "";
-$username = "";
-$password = "";
+// $host = "";
+// $dbname = "";
+// $username = "";
+// $password = "";
 
-// Establishing a connection
-$dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+// // Establishing a connection
+// $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
 // Setting Errorhandling to Exception
 $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
