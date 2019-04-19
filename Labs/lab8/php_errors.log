@@ -1,0 +1,1 @@
+[17-Apr-2019 00:11:34 UTC] PHP Parse error:  syntax error, unexpected '++' (T_INC), expecting ')' in /home/ubuntu/workspace/cst336/Labs/lab8/api/pixabayProxy.php on line 31

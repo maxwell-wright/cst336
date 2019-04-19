@@ -3,9 +3,12 @@
 
     
     function getDatabaseConnection($dbname){
-        $host = "localhost";
-        $username = "root";
-        $password = "";
+        $host = "us-cdbr-iron-east-02.cleardb.net";
+        $username = "b184106b8bd92a";
+        $password = "853ab472";
+        
+        
+    //mysql://b184106b8bd92a:853ab472@us-cdbr-iron-east-02.cleardb.net/heroku_af1b57caccf5520?reconnect=true
         
         
     //when connecting from Heroku
