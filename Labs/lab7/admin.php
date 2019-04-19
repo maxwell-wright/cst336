@@ -38,7 +38,7 @@ if (!isset($_SESSION['adminName'])) {
                 //Gets first 10 products from the database and displays them
                 $.ajax({
                     type: "GET",
-                    url: "api/getProducts.php",
+                    url: "../lab6/api/getProducts.php",
                     dataType: "json",
                     success: function(data,status) {
                       //alert(data[0].productName);
