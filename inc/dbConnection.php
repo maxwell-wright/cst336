@@ -1,21 +1,24 @@
 <?php
-    
 
+    function getDatabaseConnection($dbname) {
     
-    function getDatabaseConnection($dbname = "ottermart"){
         $host = "localhost";
         $username = "root";
         $password = "";
         
-        //creates db connection
-        $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        //checks whether the URL contains "herokuapp" (using Heroku)
+        if(strpos($_SERVER['HTTP_HOST'], 'herokuapp') !== false) {
+           $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+           $host = $url["host"];
+           $dbname = substr($url["path"], 1);
+           $username = $url["user"];
+           $password = $url["pass"];
+        }
         
-        //display error when accessing tables
-        $dbConn ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        $dbConn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
         return $dbConn;
+    
     }
-
-
-
 ?>

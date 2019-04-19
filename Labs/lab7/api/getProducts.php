@@ -1,25 +1,29 @@
 <?php
-session_start();
 
-//checks whether user has logged in
-if (!isset($_SESSION['adminName'])) {
-    
-    header('location: login.html'); //sends users to login screen if they haven't logged in
-    
-}
+//header('Access-Control-Allow-Origin: *');
 
+include '../../../inc/dbConnection.php';
+$dbConn = getDatabaseConnection("ottermart");
 
-    
-    include '../../../inc/dbConnection_heroku.php';
-    $conn = getDatabaseConnection("ottermart");
+// $host = "localhost";
+// $dbname = "ottermart";
+// $username = "root";
+// $password = "";
 
-    $productId = $_GET['productId'];
-    
-    $sql = "SELECT * FROM om_product ORDER BY productPrice";
-    
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    $product = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($product);
+// // Establishing a connection
+// $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
 
+// Setting Errorhandling to Exception
+$dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
+
+$sql = "SELECT * FROM om_product ORDER BY productPrice";
+$stmt = $dbConn -> prepare($sql);  //$connection MUST be previously initialized
+$stmt->execute();
+$records = $stmt->fetchAll(PDO::FETCH_ASSOC); //use fetch for one record, fetchAll for multiple
+
+//print_r($records); //displays array content
+
+echo json_encode($records);
+
+//echo $records[0]['productName'];
 ?>
