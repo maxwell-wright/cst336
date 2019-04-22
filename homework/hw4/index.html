@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CST336 - Homework 4 | Pokémon Dictionary</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+        <script>
+            /*global $*/
+            
+            function search() {
+    
+            $("#results").html("Loading...");
+            
+            $.ajax({
+                 method: "GET",
+                    url: "api/pokeProxy.php",
+                dataType: "json",
+                    data: { "keyword":$("#keyword").val() },
+                 success: function(data, status) {
+                //      alert("hi");
+                //      alert(data.name);
+                //      let htmlString = "";
+                //      let i = 0;
+                //      $("#images").html("");
+                //      for (let rows=0; rows < 3; rows++) {
+                        
+                //      htmlString += "<div class='row'>";
+                        
+                //      for (let cols=0; cols < 3; cols++) {
+                            
+                //      htmlString +=   "<img class='favorite' src='img/favorite.png' width='30'>";
+                //      htmlString +=  "<img src='"+ data[i++]+"' width='300' height='280'>";
+                            
+                //      }//for
+                        
+                //      htmlString += "</div>";
+                        
+                //      }//for
+                   
+                //      $("#images").append(htmlString);
+                   
+                }
+            }); //ajax 
+            
+        }//searchImage()
+            
+            
+            
+        </script>
+    </head>
+    <body>
+        <h1> Search for Pokemon</h1>
+        Keyword: <input type="text" id="keyword"/> 
+        <button onclick="search()"> Search </button>
+        <br /><br />
+
+        <div id="results"></div>
+
+    </body>
+</html>
