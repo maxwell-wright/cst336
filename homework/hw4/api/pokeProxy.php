@@ -21,12 +21,12 @@ $jsonData = curl_exec($curl);
 $err = curl_error($curl);
 curl_close($curl);
 
-echo $jsonData;
+echo $jsonData
 
-// $data = json_decode($jsonData, true);  //from JSON format to an Array
+//$data = json_decode($jsonData, true);  //from JSON format to an Array
 
-// //print_r($data);
-
+//print_r($data['types']);
+//echo $data['types']['name'];
 // $imageURLs = array();
 
 // for ($i = 0; $i < 50; $i++) {

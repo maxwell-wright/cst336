@@ -1,60 +1,156 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>CST336 - Homework 4 | Pokémon Dictionary</title>
+        <title>CST336 - Homework 4 | Pokemon Dictionary</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>   
+        
+      
         <script>
             /*global $*/
             
             function search() {
     
-            $("#results").html("Loading...");
+            //$("#results").html("Loading...");
             
             $.ajax({
-                 method: "GET",
-                    url: "api/pokeProxy.php",
+                method: "GET",
+                url: "api/pokeProxy.php",
                 dataType: "json",
-                    data: { "keyword":$("#keyword").val() },
-                 success: function(data, status) {
-                //      alert("hi");
-                //      alert(data.name);
-                //      let htmlString = "";
-                //      let i = 0;
-                //      $("#images").html("");
-                //      for (let rows=0; rows < 3; rows++) {
-                        
-                //      htmlString += "<div class='row'>";
-                        
-                //      for (let cols=0; cols < 3; cols++) {
-                            
-                //      htmlString +=   "<img class='favorite' src='img/favorite.png' width='30'>";
-                //      htmlString +=  "<img src='"+ data[i++]+"' width='300' height='280'>";
-                            
-                //      }//for
-                        
-                //      htmlString += "</div>";
-                        
-                //      }//for
-                   
-                //      $("#images").append(htmlString);
-                   
+                data: { "keyword":$("#keyword").val() },
+                success: function(data, status) {
+                     //alert("working");
+                     //$("#results").style("display", "inline");
+                     let pokeName = data.name;
+                     let pokeId = data.id;
+                     
+                     //alert(data.id);
+                     
+                     $.ajax({
+                         
+                        method: "GET",
+                        url: "api/updateDB.php",
+                        dataType: "json",
+                        data: {"name": pokeName, "id": pokeId },
+                        success: function(data, status) {
+                            //alert(data[0].timesSearched);
+                            //alert("working");
+                            //$("#results").style("display", "inline");
+                     
+                        },
+                    }); // update call
+                     
+                     
+                     let weightVar = (data.weight * 0.1);
+                     let heightVar = (data.height * 0.1);
+                     
+                     $("#nameSpan").html(data.name);
+                     $("#idSpan").html(data.id);
+                     $("#typeSpan").html(data.types[0].type.name);
+                     $("#heightSpan").html(heightVar + "m");
+                     $("#weightSpan").html(weightVar + "kg");
+                     $("#pokeImg").attr("src", data.sprites.front_default)
+                    //  $("#desrciptionSpan").html(data)
+                
                 }
             }); //ajax 
             
         }//searchImage()
+        
+        // function checkDB() {
+            
+        //     //alert("here");
+            
+        //     $.ajax({
+        //         method: "GET",
+        //         url: "api/checkDB.php",
+        //         dataType: "json",
+        //         data: { "keyword":$("#keyword").val() },
+        //         success: function(data, status) {
+        //         alert(data);
+        //         },
+                
+        //     }); // ajax
+        // }; //checkDB()        
             
             
             
         </script>
     </head>
     <body>
-        <h1> Search for Pokemon</h1>
+        <h1>Poke Finder</h1>
+        <br>
+        Search by either Pokemon name or id number!
+        <br><br>
         Keyword: <input type="text" id="keyword"/> 
-        <button onclick="search()"> Search </button>
+        <button onclick="search()" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Search</button>
         <br /><br />
 
-        <div id="results"></div>
+        <!--<div id="results">-->
+            
+            <!--<span style="bold">Name: </span>-->
+            <!--<span id="nameSpan"></span>-->
+        <!--    <br><br>-->
+            
+        <!--    <span style="bold">National Dex Number: </span>-->
+        <!--    <span id="idSpan"></span>-->
+        <!--    <br><br>-->
+            
+        <!--    <span style="bold">Type: </span>-->
+        <!--    <span id="typeSpan"></span>-->
+        <!--    <br><br>-->
+            
+        <!--    <span style="bold">Height: </span>-->
+        <!--    <span id="heightSpan"></span> m-->
+        <!--    <br><br>-->
+            
+        <!--    <span style="bold">Weight: </span>-->
+        <!--    <span id="weightSpan"></span> kg-->
+        <!--    <br><br>-->
+            
+        <!--    <img id="pokeImg" src="">-->
+            
+        <!--</div>-->
+        
+        
+        
+        
+        <!-- Trigger the modal with a button -->
+<!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>-->
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+        <h3 class="modal-title" id ="nameSpan"></h3>
+      </div>
+      <div class="modal-body">
+        <p>
+            National Dex No. <span id="idSpan"></span><br>
+            Type: <span id="typeSpan"></span><br>
+            
+            Height: <span id="heightSpan"></span><br>
+            
+            Weight: <span id="weightSpan"></span><br>
+            
+            Sprite: <img id="pokeImg" src=""><br>
+            
+            <!--Description: <p><span id="desrciptionSpan"></span></p><br>-->
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
     </body>
 </html>
