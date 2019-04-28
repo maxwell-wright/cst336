@@ -1,23 +1,33 @@
 <?php
 
 //receives these parameters: action, url, keyword
+ include '../../../inc/dbConnection.php';
+ $conn = getDatabaseConnection("c9");
 
-//TO GET THE 2 EXTRA POINTS IN THE HANDS-ON PORTION OF THE FINAL EXAM
-//1. Add favorites to database
-//2. Remove favorites from database
-//3. Display the keyword list from database (use DISTINCT)
+ $action = $_GET['action'];
+
+ $np = array();
+ 
+  switch ($action) {
+        
+        case "add":    $sql = "INSERT INTO lab8_pixabay (imageURL, keyword) VALUES (:favorite, :keyword)";
+                       $np[':keyword'] = $_GET['keyword'];
+                       $np[':favorite'] = $_GET['favorite'];
+                       break;
+        case "delete":  $sql = "DELETE FROM lab8_pixabay WHERE imageURL = :favorite";
+                        $np[':favorite'] = $_GET['favorite'];
+                        break;
+        case "keyword": //displays list of unique keywords (hint: use DISTINCT)
+                        break;
+        case "favorites": //display favorite images based on the keyword 
+                        break;
+                        
+    }//switch
 
 
-  switch (action) {
-      
-      case "add":
-                 break;
-                 
-
-      case "delete":
-                 break;
-                 
-      
-  }//switch
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($np);
+    
+    
 
 ?>

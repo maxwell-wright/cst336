@@ -1,1 +1,17 @@
 [17-Apr-2019 00:11:34 UTC] PHP Parse error:  syntax error, unexpected '++' (T_INC), expecting ')' in /home/ubuntu/workspace/cst336/Labs/lab8/api/pixabayProxy.php on line 31
+[24-Apr-2019 00:23:31 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1044] Access denied for user 'b184106b8bd92a'@'%' to database 'c9'' in /home/ubuntu/workspace/cst336/inc/dbConnection_heroku.php:25
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/inc/dbConnection_heroku.php(25): PDO->__construct('mysql:host=us-c...', 'b184106b8bd92a', '853ab472')
+#1 /home/ubuntu/workspace/cst336/Labs/lab8/api/favoritesAPI.php(4): getDatabaseConnection('c9')
+#2 {main}
+  thrown in /home/ubuntu/workspace/cst336/inc/dbConnection_heroku.php on line 25
+[26-Apr-2019 00:13:44 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'hat' in 'where clause'' in /home/ubuntu/workspace/cst336/Labs/lab8/api/showFavoritesAPI.php:13
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/Labs/lab8/api/showFavoritesAPI.php(13): PDOStatement->execute()
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/Labs/lab8/api/showFavoritesAPI.php on line 13
+[26-Apr-2019 00:17:44 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'hat' in 'where clause'' in /home/ubuntu/workspace/cst336/Labs/lab8/api/showFavoritesAPI.php:13
+Stack trace:
+#0 /home/ubuntu/workspace/cst336/Labs/lab8/api/showFavoritesAPI.php(13): PDOStatement->execute()
+#1 {main}
+  thrown in /home/ubuntu/workspace/cst336/Labs/lab8/api/showFavoritesAPI.php on line 13
