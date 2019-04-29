@@ -28,21 +28,6 @@
                      
                      //alert(data.id);
                      
-                     $.ajax({
-                         
-                        method: "GET",
-                        url: "api/updateDB.php",
-                        dataType: "json",
-                        data: {"name": pokeName, "id": pokeId },
-                        success: function(data, status) {
-                            //alert(data[0].timesSearched);
-                            //alert("working");
-                            //$("#results").style("display", "inline");
-                     
-                        },
-                    }); // update call
-                     
-                     
                      let weightVar = (data.weight * 0.1);
                      let heightVar = (data.height * 0.1);
                      
@@ -54,10 +39,44 @@
                      $("#pokeImg").attr("src", data.sprites.front_default)
                     //  $("#desrciptionSpan").html(data)
                 
-                }
+                },
+                
             }); //ajax 
             
         }//searchImage()
+        
+        function addToParty() {
+             //alert("here");
+             //retrieves the desired info to be stored into db
+             $.ajax({
+                 
+                method: "GET",
+                url: "api/pokeProxy.php",
+                dataType: "json",
+                data: { "keyword":$("#keyword").val() },
+                success: function(data, status) {
+                    //alert(data.name);
+                    
+                    //alert("second");
+                    //stores data to db
+                    $.ajax({
+                        
+                        method: "GET",
+                        url: "api/updateDB.php",
+                        dataType: "json",
+                        data: {"id": data.id,
+                               "name": data.name,
+                               "type": data.types[0].type.name,
+                               "sprite": data.sprites.front_default },
+                        success: function(data, status) {
+                            //alert("shoulda worked...");
+                            $("#catchButton").style("display", "none");                        }
+                        
+                    }); // addToParty
+                    
+                },
+            }); // update call
+         } // add to party
         
         // function checkDB() {
             
@@ -87,6 +106,7 @@
         Keyword: <input type="text" id="keyword"/> 
         <button onclick="search()" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Search</button>
         <br /><br />
+        <button id="caughtPokeButton" onclick="window.location.href='myPokemon.html'">View My Pokemon</button>
 
         <!--<div id="results">-->
             
@@ -145,6 +165,7 @@
         </p>
       </div>
       <div class="modal-footer">
+        <button type="button" id="catchButton" onclick="addToParty()">Catch!</button>  
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -153,4 +174,5 @@
 </div>
 
     </body>
+    
 </html>

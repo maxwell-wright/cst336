@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Pokemon</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>Caught Pokemon</h1>
+        
+        <button onclick="window.location.href='index.html'">Find Pokemon</button>
+        
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Type</th>
+              <th scope="col">Sprite</th>
+            </tr>
+          </thead>
+          <tbody id="appendHere">
+            
+          </tbody>
+        </table>
+
+    </body>
+    
+    <script>
+    
+        /*global $*/
+        
+        //alert("why isnt it getting to the ajax call?");
+                 
+        $.ajax({
+            
+            method: "GET",
+            url: "api/caughtPokemonAPI.php",
+            dataType: "json",
+            success: function(data, status) {
+                
+                //alert("uh hey");
+                
+                data.forEach(function(poke) {    
+                    
+                    $("#appendHere").append("<tr>" +
+                                              "<th scope='row'>" + poke.id + "</th>" +
+                                              "<td>" + poke.name + "</td>" +
+                                              "<td>" + poke.type + "</td>" +
+                                              "<td><img src='" + poke.sprite + "'>" +
+                                              "<button onclick='releasePoke(this)'>Release</button></td>" +
+                                            "</tr>")
+                    
+                }) // foreach
+                
+            } //success
+            
+        }); // ajax
+        
+        function releasePoke(target) {
+            
+            alert(target.id);
+            $.ajax({
+               
+               method: "GET",
+               url: "api/releaseAPI.php",
+               dataType: "json",
+               data: {"id": target.id},
+                success: function(data, status) {
+                    alert("no way");
+                }
+                
+            });
+            
+        } // release poke
+            
+    </script>
+    
+    <style>
+        th {
+            padding:15px;
+        }
+    </style>
+    
+</html>
