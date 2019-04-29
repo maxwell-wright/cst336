@@ -1,5 +1,5 @@
 <?php
-include "../../../inc/dbConnection_heroku.php"
+include "../../../inc/dbConnection_heroku.php";
 //receive email and score from the quiz
 
 //1. Get latest score based on email
@@ -14,7 +14,7 @@ $score = $_GET['score'];
 $namedParameters = array();
 
 
-$sql = "SELECT * FROM quiz WHERE 1 AND email LIKE $email";  //Retrieves ALL records
+$sql = "SELECT * FROM quiz WHERE `email` = $email";  //Retrieves ALL records
 
 $namedParameters[":score"] = $score; // why in a string?
 
