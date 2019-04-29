@@ -7,40 +7,39 @@ include "../../../inc/dbConnection_heroku.php";
 //3. If record not found, insert a new record for that email
 
 
-$conn = getDatabaseConnection("heroku_af1b57caccf5520");
+$conn = getDatabaseConnection("");
 
 $email = $_GET['email'];
 $score = $_GET['score'];
+$arr = array();
+$arr[':email'] = $email;
 
-$sql = "SELECT * FROM quiz WHERE `email` = $email";  //Retrieves ALL records
+$sql = "SELECT * FROM quiz WHERE `email` = :email";  //Retrieves ALL records
 
 $stmt = $conn -> prepare($sql);  //$connection MUST be previously initialized
-$stmt->execute();
+$stmt->execute($arr);
 $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+$arr[':score'] = $score;
 
 if (empty($records)) {
     // insert new row
-    $sql = "INSERT INTO quiz (`email`, `score`, `taken`) VALUES ($email, $score, 1)";
+    $sql = "INSERT INTO quiz (`email`, `score`, `taken`) VALUES (:email, :score, 1)";
     $stmt = $conn -> prepare($sql);
-    $stmt->execute();
-    // prepare reply string "keyword has been searched 1 time"
-    // overwrite records
-    $records = array('email' => $email, 'score' => 0, 'taken' => 1); // do we need a return?
+    $stmt->execute($arr);
+    
+    $records = array('email' => $email, 'score' => 0, 'taken' => 1);
     
 } else {
-    // Find out how to access current frequency
     $taken = $records[0]['taken'] + 1;
-    // update times searched
-    $sql = "UPDATE quiz
-    SET score = $score,
-    taken = $taken
-    WHERE  quiz.email =  $email";
+    $arr[':taken'] = $taken;
+    $sql = "UPDATE quiz SET `score` = :score, `taken` = :taken WHERE `email` = :email";
     $stmt = $conn -> prepare($sql);
-    $stmt->execute();
+    $stmt->execute($arr);
     
-    $records = array('email' => $email, 'score' => $records[0]['score'], $taken);
+    $records = array('email' => $email, 'score' => $records[0]['score'], 'taken' => $taken);
 }
 
 echo json_encode($records);
-
 ?>

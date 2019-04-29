@@ -6,6 +6,7 @@
         <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 
 <script>
+/*global $*/
 
 
     $(document).ready(function(){
@@ -31,7 +32,10 @@
                             "score": points
                         },
                     success: function(data,status) {
-                       alert("fnsjkfasj");
+                       
+                       $("#preScore").html(data['score']);
+                       $("#taken").html(data['taken']);
+                       
                       },
                       complete: function(data,status) { //optional, used for debugging purposes
                           //alert(status);
