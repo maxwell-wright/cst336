@@ -11,22 +11,18 @@ $conn = getDatabaseConnection("heroku_af1b57caccf5520");
 
 $email = $_GET['email'];
 $score = $_GET['score'];
-$namedParameters = array();
-
 
 $sql = "SELECT * FROM quiz WHERE `email` = $email";  //Retrieves ALL records
 
-$namedParameters[":score"] = $score; // why in a string?
-
 $stmt = $conn -> prepare($sql);  //$connection MUST be previously initialized
 $stmt->execute();
-$records = $stmt->fetch(PDO::FETCH_ASSOC);
+$records = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if (empty($records)) {
     // insert new row
-    $sql = "INSERT INTO quiz ( `email`, `score`, `taken`) VALUES ($email, :score, 1)";
+    $sql = "INSERT INTO quiz (`email`, `score`, `taken`) VALUES ($email, $score, 1)";
     $stmt = $conn -> prepare($sql);
-    $stmt->execute($namedParameters);
+    $stmt->execute();
     // prepare reply string "keyword has been searched 1 time"
     // overwrite records
     $records = array('email' => $email, 'score' => 0, 'taken' => 1); // do we need a return?
@@ -34,14 +30,13 @@ if (empty($records)) {
 } else {
     // Find out how to access current frequency
     $taken = $records[0]['taken'] + 1;
-    $namedParameters[":taken"] = "$taken";
     // update times searched
     $sql = "UPDATE quiz
-    SET score = :score,
-    taken = :taken
-    WHERE  quiz.eamil =  $email";
+    SET score = $score,
+    taken = $taken
+    WHERE  quiz.email =  $email";
     $stmt = $conn -> prepare($sql);
-    $stmt->execute($namedParameters);
+    $stmt->execute();
     
     $records = array('email' => $email, 'score' => $records[0]['score'], $taken);
 }
