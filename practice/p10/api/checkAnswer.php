@@ -19,7 +19,7 @@ $sql = "SELECT * FROM quiz WHERE `email` = $email";  //Retrieves ALL records
 $namedParameters[":score"] = $score; // why in a string?
 
 $stmt = $conn -> prepare($sql);  //$connection MUST be previously initialized
-$stmt->execute($namedParameters);
+$stmt->execute();
 $records = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (empty($records)) {
