@@ -1,7 +1,7 @@
 <?php
     
 
-include '../../../inc/dbConnection.php';
+include '../../../inc/dbConnection_heroku.php';
 $conn = getDatabaseConnection("pokeDatabase");
 
 // $sql = "INSERT INTO `poke_party`(`id`, `name`, `type`, `sprite`) VALUES ('$pokeId','$pokeName','$pokeType','$pokeSprite')";
