@@ -48,6 +48,9 @@
         function addToParty() {
              //alert("here");
              //retrieves the desired info to be stored into db
+             $("#catchButton").hide();
+             //$("#viewButton").show();
+             
              $.ajax({
                  
                 method: "GET",
@@ -58,6 +61,7 @@
                     //alert(data.name);
                     
                     //alert("second");
+                    //$("#caughtPokeButton").hide()
                     //stores data to db
                     $.ajax({
                         
@@ -70,7 +74,7 @@
                                "sprite": data.sprites.front_default },
                         success: function(data, status) {
                             //alert("shoulda worked...");
-                            $("#catchButton").style("display", "none");                        }
+                        }
                         
                     }); // addToParty
                     
@@ -165,7 +169,8 @@
         </p>
       </div>
       <div class="modal-footer">
-        <button type="button" id="catchButton" onclick="addToParty()">Catch!</button>  
+        <button type="button" id="catchButton" onclick="addToParty()">Catch!</button>
+        <!--<button type="button" id="viewButton" onclick="window.location.href='myPokemon.html'">My Pokemon</button>-->
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -174,5 +179,11 @@
 </div>
 
     </body>
+    
+    <style>
+        #viewButton {
+            display:hide;
+        }
+    </style>
     
 </html>

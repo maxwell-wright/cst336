@@ -47,7 +47,7 @@
                                               "<td>" + poke.name + "</td>" +
                                               "<td>" + poke.type + "</td>" +
                                               "<td><img src='" + poke.sprite + "'>" +
-                                              "<button onclick='releasePoke(this)'>Release</button></td>" +
+                                              "<button onclick='releasePoke(" + poke.id + ")'>Release</button></td>" +
                                             "</tr>")
                     
                 }) // foreach
@@ -56,15 +56,15 @@
             
         }); // ajax
         
-        function releasePoke(target) {
+        function releasePoke(item) {
             
-            alert(target.id);
+            alert(item);
             $.ajax({
                
                method: "GET",
                url: "api/releaseAPI.php",
                dataType: "json",
-               data: {"id": target.id},
+               data: {"id": item},
                 success: function(data, status) {
                     alert("no way");
                 }
